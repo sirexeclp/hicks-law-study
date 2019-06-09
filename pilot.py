@@ -1,122 +1,131 @@
+# %% [markdown]
+# # Hick's Law Study
+
+# %% [markdown]
+# ## Imports
+
 # %%
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+#use a costum stylesheet
+#https://matplotlib.org/3.1.0/gallery/style_sheets/style_sheets_reference.html
 plt.style.use("ggplot")
+#plt.rcParams["figure.figsize"] = [16,9]
+plt.rcParams.update({'font.size': 22,"figure.figsize":[16,9]})
 # %%
-data = pd.read_csv("hicks-law-study/data/Felix_1.txt",sep="\t")
-#data = data.drop(data[data["is error"]==1)
-# %%
-data.head()
-# %%
-data = data[data["result"]=="correct"]
-#plt.scatter(data["t1st(ms)"],data["tEnd(ms)"]-data["t1st(ms)"])
-plt.hist(data["t1st(ms)"],20)
+DATA_PATH = "data"
+
+
+# %% [markdown]
+# ## Data Import
+
+# %% [markdown]
+# Let's see if we can load the data correctly and show the top rows of the loaded dataframe.
 
 # %%
-plt.plot(data["t1st(ms)"],marker="o",linestyle = 'None')
-# %%
-data.columns
-
-# %%
-a = data[data.gestureSet == "Half"]
-b = data[data.gestureSet == "Combined"]
-# %%
-# #%matplotlib qt5
-plt.boxplot([a["tEnd(ms)"],b["tEnd(ms)"]])
-plt.savefig("test.png")
-# %%
-#b["tEnd(ms)"]
-
-# %%
-
 def read_data_from_participant(participant_id):
-    return pd.read_csv(f"hicks-law-study/data/{participant_id}.txt",sep="\t")
+    return pd.read_csv(f"{DATA_PATH}/{participant_id}.txt",sep="\t")
 
+
+# %%
+data = read_data_from_participant("Felix_1")
+data.head()
+# %% [markdown]
+# ## Data Visualization
+
+# %%
+var_name = "tEnd(ms)"
+
+# %%
+plt.rcParams.update({'font.size': 22,"figure.figsize":[16,9]})
+def plot_raw(data):
+    plt.plot(data[var_name],marker="o",linestyle = 'None')
+    plt.ylim(bottom=True)
+    #plt.xlim(left=True)
+    plt.xlabel("trial")
+    plt.ylabel("reaction time [ms]")
+
+
+# %% [markdown]
+# If we plot `tEnd(ms)` as a scatter plot, we get the following image:
+
+# %%
+plot_raw(data)
+plt.title("reaction time vs. trails (raw)")
+plt.savefig("img/fig1.svg", dpi = 300)
+plt.show()
+
+# %% [markdown]
+# Next, well have a look at the distribution. Therefore we'll create a histogram.
+
+# %%
+plt.hist(data[var_name],20)
+plt.title("overall distribution of reaction time")
+plt.xlabel("reaction time [ms]")
+plt.savefig("img/fig2.svg", dpi = 300)
+plt.show()
+
+
+# %% [markdown]
+# As expected, this looks somewhat like a normal distribution. We can remove all incorrect trials, to make it "prettier".
+
+# %% [markdown]
+# ## Data Cleansing/Preparation
+
+# %%
 def remove_incorrect(data):
     return data[data["result"]=="correct"]
 
+
+# %%
+data_correct = remove_incorrect(data)
+plt.hist(data_correct[var_name],20)
+plt.title("distribution of reaction time (errors removed)")
+plt.xlabel("reaction time [ms]")
+plt.savefig("img/fig3.svg", dpi = 300)
+plt.show()
+
+# %% [markdown]
+# As we can see there are still some outliers in the data, but lets see how this looks in a scatter plot.
+
+# %%
+plot_raw(data_correct)
+plt.title("reaction time vs. trails (errors removed)")
+plt.savefig("img/fig4.svg", dpi = 300)
+plt.show()
+# %% [markdown]
+# As we can see most values are between 300 and 700 ms with some outliers below 100 and above 1000. We can assume that these are not real values but instead are errors in the experiment. We are going to remove all values that are more than 3 standard deviations away from the mean. Since we are not interested in absolute values but rather deviation between clases, we could implement this also using the z tranform and throw away everything with $|z| >3$.
+
+# %%
 def remove_outliers(data, std_mul = 3):
-    th1 =  np.mean(data["t1st(ms)"]) + std_mul*np.std(data["t1st(ms)"])
-    th2 =  np.mean(data["t1st(ms)"]) - std_mul*np.std(data["t1st(ms)"])
-    print(th1)
-    print(th2)
-    return data[(data["t1st(ms)"] <= th1) &
-            (data["t1st(ms)"] >= th2)]
+    th1 =  np.mean(data[var_name]) + std_mul*np.std(data[var_name])
+    th2 =  np.mean(data[var_name]) - std_mul*np.std(data[var_name])
+    print(f"lower-threshold: {th1} upper-threshold: {th2}")
+    return data[(data[var_name] <= th1) &
+            (data[var_name] >= th2)]
 
 def prepare_data(data):
     cleaned_data = remove_incorrect(data)
     cleaned_data = remove_outliers(cleaned_data)
     return cleaned_data
 
-def plot_raw(data):
-    plt.bar(data["trial"]*data["block"],data["t1st(ms)"])#,marker="o",linestyle = 'None')
-    plt.ylim(ymin=0)
-
-def t_test_wrapper(a,b,alternative, alpha):
-    if alternative is "less":
-        a,b=b,a
-    test_result = ttest_ind(a,b)
-    p_val = test_result.pvalue/2
-    t = test_result.statistic
-    if t < 0:
-        p_val = 1-p_val
-    if p_val < alpha:
-        return True, p_val
-    else:
-        return False, p_val
-#    if alternative is "greater":
-#        if p_val < alpha and t >0:
-#            return True, p_val
-#        else:
-#            return False, p_val
-#    elif alternative is "less":
-#        if p_val < alpha and t < 0:
-#            return True, p_val
-#        else:
-#            return False, p_val
-#    else:
-#        raise ValueError("alternative must be 'greater' or 'less'")
 
 # %%
+old_len = len(data)
+data_clean = prepare_data(data)
+new_len = len(data_clean)
+print(f"{old_len-new_len} records removed")
 
-data_f = read_data_from_participant("Felix_1")
-plot_raw(data_f)
-cleaned_f = prepare_data(data_f)
-plot_raw(cleaned_f)
+# %% [markdown]
+# To see which data points have been removed, let's overlay raw and cleaned data.
+
+# %%
+plot_raw(data)
+plot_raw(data_clean)
+plt.title("reaction time vs. trails (raw & cleaned)")
 plt.legend(["raw","cleaned"])
-# %%
-f3 = cleaned_f[(cleaned_f["gesture"]=="Flat") & (cleaned_f["fNmb"]==3)]
-# %%
-plt.boxplot([f3[f3["gestureSet"]=="Half"]["t1st(ms)"],f3[f3["gestureSet"]=="Combined"]["t1st(ms)"]])
-# %%
-plt.hist(f3["t1st(ms)"],20)
-# %%
-from scipy.stats import ttest_ind
-print(np.mean(f3[f3["gestureSet"]=="Half"]["t1st(ms)"]))
-print(np.mean(f3[f3["gestureSet"]=="Combined"]["t1st(ms)"]))
-
-t_test_wrapper(*[f3[f3["gestureSet"]=="Combined"]["t1st(ms)"],f3[f3["gestureSet"]=="Half"]["t1st(ms)"]],"greater",0.05)
-# %%
-a = np.random.normal(0,size=100)
-b = np.random.normal(1,size=100)
-result, p = t_test_wrapper(a,b,"less",0.05)
-print(p)
-assert result == True, "err"
-result, p  = t_test_wrapper(a,b,"greater",0.05)
-print(p)
-assert result == False, "err"
-
-
-# %%
-a = np.random.normal(4,size=100)
-b = np.random.normal(3,size=100)
-result, p = t_test_wrapper(a,b,"greater",0.05)
-print(p)
-assert result == True, "err"
-result, p  = t_test_wrapper(a,b,"less",0.05)
-print(p)
-assert result == False, "err"
-
+plt.savefig("img/fig5.svg", dpi = 300)
+plt.show()
 
 # %%
