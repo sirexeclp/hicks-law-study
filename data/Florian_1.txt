@@ -1,0 +1,241 @@
+partiID	condiID	gestureSet	trial	block	rep	fNmb	gesture	result	recFNmb	recGest	t1st(ms)	tEnd(ms)
+1	0	Half	0	0	0	3	Flat	error			823	0
+1	0	Half	1	0	0	3	Flat	correct	3	Flat	707	819
+1	0	Half	2	0	0	1	Tip	correct	1	Tip	657	729
+1	0	Half	3	0	0	3	Flat	error			521	0
+1	0	Half	4	0	0	3	Flat	correct	3	Flat	920	964
+1	0	Half	5	0	0	1	Tip	correct	1	Tip	494	558
+1	0	Half	6	0	0	1	Tip	correct	1	Tip	615	670
+1	0	Half	7	0	0	3	Flat	correct	3	Flat	567	667
+1	0	Half	8	0	0	3	Flat	correct	3	Flat	620	707
+1	0	Half	9	0	0	1	Tip	correct	1	Tip	475	546
+1	0	Half	10	0	0	1	Tip	error			566	0
+1	0	Half	11	0	0	1	Tip	error			775	0
+1	0	Half	0	1	0	3	Flat	error			1375	0
+1	0	Half	1	1	0	3	Flat	correct	3	Flat	819	933
+1	0	Half	2	1	0	1	Tip	correct	1	Tip	626	706
+1	0	Half	3	1	0	3	Flat	correct	3	Flat	543	670
+1	0	Half	4	1	0	3	Flat	correct	3	Flat	747	871
+1	0	Half	5	1	0	1	Tip	correct	1	Tip	600	696
+1	0	Half	6	1	0	1	Tip	error			362	0
+1	0	Half	7	1	0	3	Flat	correct	3	Flat	574	726
+1	0	Half	8	1	0	3	Flat	correct	3	Flat	705	839
+1	0	Half	9	1	0	1	Tip	correct	1	Tip	645	749
+1	0	Half	10	1	0	1	Tip	error			431	0
+1	0	Half	11	1	0	1	Tip	correct	1	Tip	714	778
+1	0	Half	0	2	0	3	Flat	correct	3	Flat	545	663
+1	0	Half	1	2	0	3	Flat	error			661	0
+1	0	Half	2	2	0	1	Tip	correct	1	Tip	572	629
+1	0	Half	3	2	0	3	Flat	correct	3	Flat	611	698
+1	0	Half	4	2	0	3	Flat	correct	3	Flat	614	717
+1	0	Half	5	2	0	1	Tip	correct	1	Tip	493	566
+1	0	Half	6	2	0	1	Tip	correct	1	Tip	1008	1056
+1	0	Half	7	2	0	3	Flat	correct	3	Flat	598	672
+1	0	Half	8	2	0	3	Flat	correct	3	Flat	787	877
+1	0	Half	9	2	0	1	Tip	error			592	0
+1	0	Half	10	2	0	1	Tip	correct	1	Tip	793	850
+1	0	Half	11	2	0	1	Tip	correct	1	Tip	661	749
+1	0	Half	0	3	0	3	Flat	correct	3	Flat	673	774
+1	0	Half	1	3	0	3	Flat	correct	3	Flat	592	683
+1	0	Half	2	3	0	1	Tip	correct	1	Tip	592	672
+1	0	Half	3	3	0	3	Flat	correct	3	Flat	461	555
+1	0	Half	4	3	0	3	Flat	correct	3	Flat	621	714
+1	0	Half	5	3	0	1	Tip	correct	1	Tip	599	671
+1	0	Half	6	3	0	1	Tip	correct	1	Tip	664	736
+1	0	Half	7	3	0	3	Flat	correct	3	Flat	562	633
+1	0	Half	8	3	0	3	Flat	correct	3	Flat	583	651
+1	0	Half	9	3	0	1	Tip	error			640	0
+1	0	Half	10	3	0	1	Tip	correct	1	Tip	699	755
+1	0	Half	11	3	0	1	Tip	correct	1	Tip	713	793
+1	0	Half	0	4	0	3	Flat	correct	3	Flat	747	862
+1	0	Half	1	4	0	3	Flat	error			611	0
+1	0	Half	2	4	0	1	Tip	correct	1	Tip	743	823
+1	0	Half	3	4	0	3	Flat	correct	3	Flat	605	719
+1	0	Half	4	4	0	3	Flat	correct	3	Flat	672	767
+1	0	Half	5	4	0	1	Tip	error			568	0
+1	0	Half	6	4	0	1	Tip	correct	1	Tip	2190	2231
+1	0	Half	7	4	0	3	Flat	correct	3	Flat	565	654
+1	0	Half	8	4	0	3	Flat	correct	3	Flat	607	710
+1	0	Half	9	4	0	1	Tip	error			578	0
+1	0	Half	10	4	0	1	Tip	correct	1	Tip	746	818
+1	0	Half	11	4	0	1	Tip	correct	1	Tip	666	754
+1	1	Half	0	0	0	1	Flat	error			912	0
+1	1	Half	1	0	0	1	Flat	error			742	0
+1	1	Half	2	0	0	3	Tip	correct	3	Tip	781	886
+1	1	Half	3	0	0	1	Flat	error			574	0
+1	1	Half	4	0	0	3	Tip	correct	3	Tip	787	867
+1	1	Half	5	0	0	3	Tip	correct	3	Tip	695	808
+1	1	Half	6	0	0	3	Tip	error			528	0
+1	1	Half	7	0	0	1	Flat	correct	1	Flat	637	724
+1	1	Half	8	0	0	3	Tip	correct	3	Tip	1202	1266
+1	1	Half	9	0	0	3	Tip	correct	3	Tip	770	881
+1	1	Half	10	0	0	1	Flat	error			699	0
+1	1	Half	11	0	0	1	Flat	correct	1	Flat	602	674
+1	1	Half	0	1	0	1	Flat	correct	1	Flat	582	661
+1	1	Half	1	1	0	1	Flat	correct	1	Flat	554	626
+1	1	Half	2	1	0	3	Tip	correct	3	Tip	714	777
+1	1	Half	3	1	0	1	Flat	error			466	0
+1	1	Half	4	1	0	3	Tip	correct	3	Tip	568	647
+1	1	Half	5	1	0	3	Tip	correct	3	Tip	673	753
+1	1	Half	6	1	0	3	Tip	correct	3	Tip	576	646
+1	1	Half	7	1	0	1	Flat	error			330	0
+1	1	Half	8	1	0	3	Tip	correct	3	Tip	456	551
+1	1	Half	9	1	0	3	Tip	correct	3	Tip	527	664
+1	1	Half	10	1	0	1	Flat	error			542	0
+1	1	Half	11	1	0	1	Flat	correct	1	Flat	574	645
+1	1	Half	0	2	0	1	Flat	error			759	0
+1	1	Half	1	2	0	1	Flat	correct	1	Flat	568	639
+1	1	Half	2	2	0	3	Tip	correct	3	Tip	650	722
+1	1	Half	3	2	0	1	Flat	error			595	0
+1	1	Half	4	2	0	3	Tip	error			631	0
+1	1	Half	5	2	0	3	Tip	correct	3	Tip	807	871
+1	1	Half	6	2	0	3	Tip	correct	3	Tip	527	598
+1	1	Half	7	2	0	1	Flat	error			631	0
+1	1	Half	8	2	0	3	Tip	correct	3	Tip	741	828
+1	1	Half	9	2	0	3	Tip	correct	3	Tip	819	915
+1	1	Half	10	2	0	1	Flat	correct	1	Flat	578	649
+1	1	Half	11	2	0	1	Flat	error			870	0
+1	1	Half	0	3	0	1	Flat	correct	1	Flat	889	977
+1	1	Half	1	3	0	1	Flat	correct	1	Flat	682	761
+1	1	Half	2	3	0	3	Tip	correct	3	Tip	562	650
+1	1	Half	3	3	0	1	Flat	error			530	0
+1	1	Half	4	3	0	3	Tip	correct	3	Tip	584	655
+1	1	Half	5	3	0	3	Tip	correct	3	Tip	456	544
+1	1	Half	6	3	0	3	Tip	correct	3	Tip	460	556
+1	1	Half	7	3	0	1	Flat	correct	1	Flat	614	710
+1	1	Half	8	3	0	3	Tip	correct	3	Tip	958	1047
+1	1	Half	9	3	0	3	Tip	correct	3	Tip	618	698
+1	1	Half	10	3	0	1	Flat	error			623	0
+1	1	Half	11	3	0	1	Flat	error			634	0
+1	1	Half	0	4	0	1	Flat	correct	1	Flat	642	721
+1	1	Half	1	4	0	1	Flat	error			509	0
+1	1	Half	2	4	0	3	Tip	correct	3	Tip	578	634
+1	1	Half	3	4	0	1	Flat	error			604	0
+1	1	Half	4	4	0	3	Tip	correct	3	Tip	703	800
+1	1	Half	5	4	0	3	Tip	correct	3	Tip	569	615
+1	1	Half	6	4	0	3	Tip	correct	3	Tip	436	524
+1	1	Half	7	4	0	1	Flat	correct	1	Flat	518	630
+1	1	Half	8	4	0	3	Tip	correct	3	Tip	557	654
+1	1	Half	9	4	0	3	Tip	error			393	0
+1	1	Half	10	4	0	1	Flat	error			858	0
+1	1	Half	11	4	0	1	Flat	error			1485	0
+1	2	Combined	0	0	0	1	Flat	correct	1	Flat	772	863
+1	2	Combined	1	0	0	1	Flat	error			557	0
+1	2	Combined	2	0	0	3	Tip	correct	3	Tip	768	856
+1	2	Combined	3	0	0	1	Tip	correct	1	Tip	774	839
+1	2	Combined	4	0	0	1	Flat	error			617	0
+1	2	Combined	5	0	0	3	Tip	correct	3	Tip	721	838
+1	2	Combined	6	0	0	3	Flat	correct	3	Flat	1003	1141
+1	2	Combined	7	0	0	1	Tip	error			694	0
+1	2	Combined	8	0	0	3	Flat	correct	3	Flat	665	816
+1	2	Combined	9	0	0	1	Tip	correct	1	Tip	615	687
+1	2	Combined	10	0	0	3	Flat	correct	3	Flat	570	702
+1	2	Combined	11	0	0	3	Tip	correct	3	Tip	636	748
+1	2	Combined	0	1	0	1	Flat	error			549	0
+1	2	Combined	1	1	0	1	Flat	correct	1	Flat	773	884
+1	2	Combined	2	1	0	3	Tip	correct	3	Tip	688	766
+1	2	Combined	3	1	0	1	Tip	correct	1	Tip	816	880
+1	2	Combined	4	1	0	1	Flat	error			662	0
+1	2	Combined	5	1	0	3	Tip	correct	3	Tip	609	713
+1	2	Combined	6	1	0	3	Flat	correct	3	Flat	538	597
+1	2	Combined	7	1	0	1	Tip	correct	1	Tip	747	810
+1	2	Combined	8	1	0	3	Flat	correct	3	Flat	668	811
+1	2	Combined	9	1	0	1	Tip	correct	1	Tip	671	768
+1	2	Combined	10	1	0	3	Flat	correct	3	Flat	473	594
+1	2	Combined	11	1	0	3	Tip	correct	3	Tip	716	795
+1	2	Combined	0	2	0	1	Flat	error			641	0
+1	2	Combined	1	2	0	1	Flat	error			796	0
+1	2	Combined	2	2	0	3	Tip	correct	3	Tip	710	781
+1	2	Combined	3	2	0	1	Tip	correct	1	Tip	690	762
+1	2	Combined	4	2	0	1	Flat	correct	1	Flat	660	772
+1	2	Combined	5	2	0	3	Tip	correct	3	Tip	628	733
+1	2	Combined	6	2	0	3	Flat	correct	3	Flat	711	804
+1	2	Combined	7	2	0	1	Tip	correct	1	Tip	580	668
+1	2	Combined	8	2	0	3	Flat	correct	3	Flat	558	691
+1	2	Combined	9	2	0	1	Tip	correct	1	Tip	582	663
+1	2	Combined	10	2	0	3	Flat	correct	3	Flat	568	716
+1	2	Combined	11	2	0	3	Tip	correct	3	Tip	655	774
+1	2	Combined	0	3	0	1	Flat	correct	1	Flat	649	793
+1	2	Combined	1	3	0	1	Flat	error			1069	0
+1	2	Combined	2	3	0	3	Tip	correct	3	Tip	1055	1138
+1	2	Combined	3	3	0	1	Tip	correct	1	Tip	896	984
+1	2	Combined	4	3	0	1	Flat	error			690	0
+1	2	Combined	5	3	0	3	Tip	correct	3	Tip	865	944
+1	2	Combined	6	3	0	3	Flat	correct	3	Flat	725	887
+1	2	Combined	7	3	0	1	Tip	correct	1	Tip	546	610
+1	2	Combined	8	3	0	3	Flat	correct	3	Flat	656	793
+1	2	Combined	9	3	0	1	Tip	correct	1	Tip	561	624
+1	2	Combined	10	3	0	3	Flat	correct	3	Flat	607	715
+1	2	Combined	11	3	0	3	Tip	correct	3	Tip	691	778
+1	2	Combined	0	4	0	1	Flat	correct	1	Flat	624	719
+1	2	Combined	1	4	0	1	Flat	correct	1	Flat	649	762
+1	2	Combined	2	4	0	3	Tip	correct	3	Tip	735	781
+1	2	Combined	3	4	0	1	Tip	error			397	0
+1	2	Combined	4	4	0	1	Flat	correct	1	Flat	852	958
+1	2	Combined	5	4	0	3	Tip	correct	3	Tip	777	881
+1	2	Combined	6	4	0	3	Flat	correct	3	Flat	599	729
+1	2	Combined	7	4	0	1	Tip	error			596	0
+1	2	Combined	8	4	0	3	Flat	correct	3	Flat	722	882
+1	2	Combined	9	4	0	1	Tip	correct	1	Tip	658	730
+1	2	Combined	10	4	0	3	Flat	correct	3	Flat	698	858
+1	2	Combined	11	4	0	3	Tip	correct	3	Tip	817	894
+1	2	Combined	0	5	0	1	Flat	correct	1	Flat	809	944
+1	2	Combined	1	5	0	1	Flat	correct	1	Flat	675	796
+1	2	Combined	2	5	0	3	Tip	correct	3	Tip	839	908
+1	2	Combined	3	5	0	1	Tip	correct	1	Tip	696	768
+1	2	Combined	4	5	0	1	Flat	error			626	0
+1	2	Combined	5	5	0	3	Tip	correct	3	Tip	747	833
+1	2	Combined	6	5	0	3	Flat	correct	3	Flat	710	853
+1	2	Combined	7	5	0	1	Tip	correct	1	Tip	665	736
+1	2	Combined	8	5	0	3	Flat	correct	3	Flat	641	784
+1	2	Combined	9	5	0	1	Tip	correct	1	Tip	634	698
+1	2	Combined	10	5	0	3	Flat	correct	3	Flat	960	1094
+1	2	Combined	11	5	0	3	Tip	correct	3	Tip	761	865
+1	2	Combined	0	6	0	1	Flat	correct	1	Flat	610	730
+1	2	Combined	1	6	0	1	Flat	correct	1	Flat	612	715
+1	2	Combined	2	6	0	3	Tip	correct	3	Tip	939	1035
+1	2	Combined	3	6	0	1	Tip	correct	1	Tip	1206	1270
+1	2	Combined	4	6	0	1	Flat	error			959	0
+1	2	Combined	5	6	0	3	Tip	correct	3	Tip	1116	1220
+1	2	Combined	6	6	0	3	Flat	correct	3	Flat	710	902
+1	2	Combined	7	6	0	1	Tip	correct	1	Tip	663	735
+1	2	Combined	8	6	0	3	Flat	correct	3	Flat	734	907
+1	2	Combined	9	6	0	1	Tip	correct	1	Tip	818	890
+1	2	Combined	10	6	0	3	Flat	error			690	0
+1	2	Combined	11	6	0	3	Tip	correct	3	Tip	969	1089
+1	2	Combined	0	7	0	1	Flat	error			817	0
+1	2	Combined	1	7	0	1	Flat	error			833	0
+1	2	Combined	2	7	0	3	Tip	correct	3	Tip	934	1021
+1	2	Combined	3	7	0	1	Tip	correct	1	Tip	758	822
+1	2	Combined	4	7	0	1	Flat	error			796	0
+1	2	Combined	5	7	0	3	Tip	correct	3	Tip	747	843
+1	2	Combined	6	7	0	3	Flat	correct	3	Flat	814	951
+1	2	Combined	7	7	0	1	Tip	correct	1	Tip	626	714
+1	2	Combined	8	7	0	3	Flat	correct	3	Flat	1298	1436
+1	2	Combined	9	7	0	1	Tip	correct	1	Tip	652	700
+1	2	Combined	10	7	0	3	Flat	correct	3	Flat	674	820
+1	2	Combined	11	7	0	3	Tip	correct	3	Tip	881	1001
+1	2	Combined	0	8	0	1	Flat	error			658	0
+1	2	Combined	1	8	0	1	Flat	error			1092	0
+1	2	Combined	2	8	0	3	Tip	correct	3	Tip	903	998
+1	2	Combined	3	8	0	1	Tip	error			721	0
+1	2	Combined	4	8	0	1	Flat	correct	1	Flat	763	900
+1	2	Combined	5	8	0	3	Tip	correct	3	Tip	920	1024
+1	2	Combined	6	8	0	3	Flat	correct	3	Flat	814	984
+1	2	Combined	7	8	0	1	Tip	correct	1	Tip	729	785
+1	2	Combined	8	8	0	3	Flat	correct	3	Flat	650	821
+1	2	Combined	9	8	0	1	Tip	correct	1	Tip	554	618
+1	2	Combined	10	8	0	3	Flat	error			577	0
+1	2	Combined	11	8	0	3	Tip	correct	3	Tip	786	893
+1	2	Combined	0	9	0	1	Flat	error			674	0
+1	2	Combined	1	9	0	1	Flat	correct	1	Flat	693	813
+1	2	Combined	2	9	0	3	Tip	correct	3	Tip	943	1030
+1	2	Combined	3	9	0	1	Tip	correct	1	Tip	598	670
+1	2	Combined	4	9	0	1	Flat	error			664	0
+1	2	Combined	5	9	0	3	Tip	correct	3	Tip	796	900
+1	2	Combined	6	9	0	3	Flat	error			725	0
+1	2	Combined	7	9	0	1	Tip	correct	1	Tip	696	785
+1	2	Combined	8	9	0	3	Flat	error			599	0
+1	2	Combined	9	9	0	1	Tip	correct	1	Tip	606	670
+1	2	Combined	10	9	0	3	Flat	correct	3	Flat	574	719
+1	2	Combined	11	9	0	3	Tip	correct	3	Tip	991	1080
