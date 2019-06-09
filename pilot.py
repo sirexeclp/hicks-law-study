@@ -95,7 +95,7 @@ plt.title("reaction time vs. trails (errors removed)")
 plt.savefig("img/fig4.svg", dpi = 300)
 plt.show()
 # %% [markdown]
-# As we can see most values are between 300 and 700 ms with some outliers below 100 and above 1000. We can assume that these are not real values but instead are errors in the experiment. We are going to remove all values that are more than 3 standard deviations away from the mean. Since we are not interested in absolute values but rather deviation between clases, we could implement this also using the z tranform and throw away everything with $|z| >3$.
+# As we can see most values are between 400 and 800 ms with some outliers below 100 and above 1000. We can assume that these are not real values but instead are errors in the experiment. We are going to remove all values that are more than 3 standard deviations away from the mean. Since we are not interested in absolute values but rather deviation between clases, we could implement this also using the z tranform and throw away everything with $|z| >3$.
 
 # %%
 def remove_outliers(data, std_mul = 3):
