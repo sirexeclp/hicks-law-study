@@ -29,7 +29,7 @@ def read_data_from_participant(participant_id):
 
 
 # %%
-data = read_data_from_participant("Felix_1")
+data = read_data_from_participant("1_114920")
 data.head()
 # %% [markdown]
 # ## Data Visualization
