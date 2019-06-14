@@ -8,6 +8,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 #use a costum stylesheet
 #https://matplotlib.org/3.1.0/gallery/style_sheets/style_sheets_reference.html
 plt.style.use("ggplot")
@@ -15,6 +16,10 @@ plt.style.use("ggplot")
 plt.rcParams.update({'font.size': 22,"figure.figsize":[16,9]})
 # %%
 DATA_PATH = "data"
+
+# %%
+from os import listdir
+listdir(DATA_PATH)
 
 
 # %% [markdown]
@@ -29,17 +34,8 @@ def read_data_from_participant(participant_id):
 
 
 # %%
-data = read_data_from_participant("1_114920")
+data = read_data_from_participant("3_122654")
 data.head()
-# %%
-for x in data.groupby(["gesture","fNmb"]):
-    #print(x)
-    xdf = pd.DataFrame(x[1])
-    half = xdf[xdf.gestureSet == "Half"]
-    combined = xdf[xdf.gestureSet == "Combined"]
-    plt.boxplot([half["tEnd(ms)"],combined["tEnd(ms)"]])
-    plt.show()
-
 # %% [markdown]
 # ## Data Visualization
 
@@ -126,6 +122,13 @@ data_clean = prepare_data(data)
 new_len = len(data_clean)
 print(f"{old_len-new_len} records removed")
 
+# %%
+plt.hist(np.log(data_clean[var_name]),20)
+plt.title("log distribution of reaction time (cleaned)")
+plt.xlabel("log of reaction time [ms]")
+plt.savefig("img/fig6.svg", dpi = 300)
+plt.show()
+
 # %% [markdown]
 # To see which data points have been removed, let's overlay raw and cleaned data.
 
@@ -136,5 +139,16 @@ plt.title("reaction time vs. trails (raw & cleaned)")
 plt.legend(["raw","cleaned"])
 plt.savefig("img/fig5.svg", dpi = 300)
 plt.show()
+
+# %%
+for x in data_clean.groupby(["gesture","fNmb"]):
+    xdf = pd.DataFrame(x[1])
+    half = xdf[xdf.gestureSet == "Half"]
+    combined = xdf[xdf.gestureSet == "Combined"]
+    plt.boxplot([half["tEnd(ms)"],combined["tEnd(ms)"]])
+    plt.xticks([1,2],["Half","Combined"])
+    plt.ylabel("reaction time [ms]")
+    plt.title(f"{x[0][1]} Finger {x[0][0]}")
+    plt.show()
 
 # %%
