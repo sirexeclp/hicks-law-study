@@ -30,7 +30,16 @@ def read_data_from_participant(participant_id):
 
 # %%
 data = read_data_from_participant("Felix_1")
-data.head()
+data
+# %%
+for x in data.groupby(["gesture","fNmb"]):
+    #print(x)
+    xdf = pd.DataFrame(x[1])
+    half = xdf[xdf.gestureSet == "Half"]
+    combined = xdf[xdf.gestureSet == "Combined"]
+    plt.boxplot([half["tEnd(ms)"],combined["tEnd(ms)"]])
+    plt.show()
+
 # %% [markdown]
 # ## Data Visualization
 
