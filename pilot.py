@@ -44,6 +44,17 @@ def read_data_from_participant(participant_id):
 # %%
 data = read_data_from_participant("combined2")
 data.head()
+# %%
+mapping_file_path = f"{DATA_PATH}/participant_mapping.csv"
+participant_mapping = {}
+with open(mapping_file_path) as f:
+    for line in f:
+        content = line.replace("\n", "").split(";")
+        participant_mapping[content[0]] = content[1]
+
+# %%
+participant_mapping
+
 # %% [markdown]
 # ## Data Visualization
 
@@ -83,17 +94,28 @@ def z_transform(val):
 import seaborn as sns
 #plt.figure(figsize=(16, 9))
 for s in data.groupby("partiID"):
+    fig, ax = plt.subplots(1, 1)
     dat = pd.DataFrame(s[1])
+    participant_names = []
     for i in dat.groupby("filename"):
         p = pd.DataFrame(i[1])
-        plt.plot(np.arange(0,len(p)),z_transform(p[var_name]),marker="o",linestyle = 'None')
+        filename = list(p["filename"])[0]
+        ax.plot(p[var_name], marker="o", linestyle = 'None', label=participant_mapping[filename])
+#         participant_names.append(participant_mapping[p["filename", 0]])
+#         plt.plot(np.arange(0,len(p)),z_transform(p[var_name]),marker="o",linestyle = 'None')
     #sns.lmplot(x = "index", y=var_name, data=dat, fit_reg=False
     #       #  , hue='filename', legend=False, palette="Set2", height=9,aspect=19/9)
     plt.title(f"plot of raw data (set order {s[0]})")
+    
     # Move the legend to an empty part of the plot
-    plt.legend([x.split(".")[0] for x in dat["filename"]], loc='upper right')
-    plt.savefig(f"img/raw_plot{s[0]}.png")
-    plt.show()
+#     fig.legend([x.split(".")[0] for x in dat["filename"]], loc='upper right')
+#     fig.show()
+    ax.set_xticklabels([""])
+    ax.set_xlabel('trials')
+    ax.set_ylabel('time for gesture completion [ms]')
+
+    fig.legend()
+    fig.savefig(f"raw_plot{s[0]}")
 
 # %%
 # ?sns.lmplot
