@@ -3,6 +3,10 @@
 # <div class="toc"><ul class="toc-item"><li><span><a href="#Hick's-Law-Study" data-toc-modified-id="Hick's-Law-Study-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Hick's Law Study</a></span><ul class="toc-item"><li><span><a href="#Imports" data-toc-modified-id="Imports-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Data-Import" data-toc-modified-id="Data-Import-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Data Import</a></span></li><li><span><a href="#Data-Visualization" data-toc-modified-id="Data-Visualization-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Data Visualization</a></span></li><li><span><a href="#Data-Cleansing/Preparation" data-toc-modified-id="Data-Cleansing/Preparation-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Data Cleansing/Preparation</a></span></li><li><span><a href="#Tutorial" data-toc-modified-id="Tutorial-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Tutorial</a></span></li><li><span><a href="#Plot-raw-data" data-toc-modified-id="Plot-raw-data-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Plot raw data</a></span></li><li><span><a href="#Remove-&quot;errors&quot;" data-toc-modified-id="Remove-&quot;errors&quot;-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Remove "errors"</a></span></li><li><span><a href="#Global-Histogram" data-toc-modified-id="Global-Histogram-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Global Histogram</a></span></li></ul></li></ul></div>
 
 # %% [markdown]
+# <h1>Table of Contents<span class="tocSkip"></span></h1>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Hick's-Law-Study" data-toc-modified-id="Hick's-Law-Study-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Hick's Law Study</a></span><ul class="toc-item"><li><span><a href="#Imports" data-toc-modified-id="Imports-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Data-Import" data-toc-modified-id="Data-Import-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Data Import</a></span></li><li><span><a href="#Data-Visualization" data-toc-modified-id="Data-Visualization-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Data Visualization</a></span></li><li><span><a href="#Data-Cleansing/Preparation" data-toc-modified-id="Data-Cleansing/Preparation-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Data Cleansing/Preparation</a></span></li><li><span><a href="#Tutorial" data-toc-modified-id="Tutorial-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Tutorial</a></span></li><li><span><a href="#Plot-raw-data" data-toc-modified-id="Plot-raw-data-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Plot raw data</a></span></li><li><span><a href="#Remove-&quot;errors&quot;" data-toc-modified-id="Remove-&quot;errors&quot;-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Remove "errors"</a></span></li><li><span><a href="#Global-Histogram" data-toc-modified-id="Global-Histogram-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Global Histogram</a></span></li></ul></li></ul></div>
+
+# %% [markdown]
 # # Hick's Law Study
 
 # %% [markdown]
@@ -88,8 +92,8 @@ for s in data.groupby("partiID"):
     plt.title(f"plot of raw data (set order {s[0]})")
     # Move the legend to an empty part of the plot
     plt.legend([x.split(".")[0] for x in dat["filename"]], loc='upper right')
+    plt.savefig(f"img/raw_plot{s[0]}.png")
     plt.show()
-    plt.savefig(f"raw_plot{s[0]}")
 
 # %%
 # ?sns.lmplot
@@ -195,7 +199,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # %%
-hicks_law_data = pd.read_csv("data/combined.txt",sep="\t")
+hicks_law_data = pd.read_csv("data/combined2.txt",sep="\t")
 hicks_law_data.head()
 
 # %%
@@ -243,5 +247,20 @@ plt.show()
 
 # %%
 # TODO: pairwise ttest (two sided)
+
+
+# %%
+gestureSets = ["Half", "Combined"]
+for x in hicks_law_data.groupby(["fNmb","gesture"]):
+    xdf = pd.DataFrame(x[1])
+    title = f"{x[0][0]} Finger{'s' if (int(x[0][0])>1) else ''} - {x[0][1]}"
+    plt.title(title)
+    reaction_times = [xdf[xdf.gestureSet == gesture_set]["logtime"]
+                      for gesture_set in gesture_set_types]
+    plt.boxplot(reaction_times)
+    plt.xticks(*list(zip(*enumerate(gestureSets,1))))
+    plt.ylabel("log reaction time [log ms]")
+    plt.savefig(f"img/{title.replace(' ', '')}-box.png",dpi=300)
+    plt.show()
 
 # %%
