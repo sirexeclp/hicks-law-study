@@ -1,12 +1,4 @@
 # %% [markdown]
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Hick's-Law-Study" data-toc-modified-id="Hick's-Law-Study-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Hick's Law Study</a></span><ul class="toc-item"><li><span><a href="#Imports" data-toc-modified-id="Imports-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Data-Import" data-toc-modified-id="Data-Import-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Data Import</a></span></li><li><span><a href="#Data-Visualization" data-toc-modified-id="Data-Visualization-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Data Visualization</a></span></li><li><span><a href="#Data-Cleansing/Preparation" data-toc-modified-id="Data-Cleansing/Preparation-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Data Cleansing/Preparation</a></span></li><li><span><a href="#Tutorial" data-toc-modified-id="Tutorial-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Tutorial</a></span></li><li><span><a href="#Plot-raw-data" data-toc-modified-id="Plot-raw-data-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Plot raw data</a></span></li><li><span><a href="#Remove-&quot;errors&quot;" data-toc-modified-id="Remove-&quot;errors&quot;-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Remove "errors"</a></span></li><li><span><a href="#Global-Histogram" data-toc-modified-id="Global-Histogram-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Global Histogram</a></span></li></ul></li></ul></div>
-
-# %% [markdown]
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Hick's-Law-Study" data-toc-modified-id="Hick's-Law-Study-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Hick's Law Study</a></span><ul class="toc-item"><li><span><a href="#Imports" data-toc-modified-id="Imports-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Data-Import" data-toc-modified-id="Data-Import-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Data Import</a></span></li><li><span><a href="#Data-Visualization" data-toc-modified-id="Data-Visualization-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Data Visualization</a></span></li><li><span><a href="#Data-Cleansing/Preparation" data-toc-modified-id="Data-Cleansing/Preparation-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Data Cleansing/Preparation</a></span></li><li><span><a href="#Tutorial" data-toc-modified-id="Tutorial-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Tutorial</a></span></li><li><span><a href="#Plot-raw-data" data-toc-modified-id="Plot-raw-data-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Plot raw data</a></span></li><li><span><a href="#Remove-&quot;errors&quot;" data-toc-modified-id="Remove-&quot;errors&quot;-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Remove "errors"</a></span></li><li><span><a href="#Global-Histogram" data-toc-modified-id="Global-Histogram-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Global Histogram</a></span></li></ul></li></ul></div>
-
-# %% [markdown]
 # # Hick's Law Study
 
 # %% [markdown]
@@ -114,7 +106,7 @@ for s in data.groupby("partiID"):
     ax.set_xlabel('trials')
     ax.set_ylabel('time for gesture completion [ms]')
 
-    fig.legend()
+    fig.legend(loc='upper right')
     fig.savefig(f"raw_plot{s[0]}")
 
 # %%
@@ -234,6 +226,20 @@ hicks_law_data.partiID = hicks_law_data.partiID.astype('category')
 plt.plot(hicks_law_data["tEnd(ms)"], "bo")
 
 # %% [markdown]
+# ## Compare error rates
+
+# %%
+gesture_set_types = ["Half", "Combined"]
+legend =[]
+for x in hicks_law_data.groupby(["fNmb","gesture"]):
+    print(x[0])
+    legend.append(x[0])
+    xdf = pd.DataFrame(x[1])
+    print(xdf[xdf["tEnd(ms)"]==0].groupby("gestureSet").count()["tEnd(ms)"])
+    plt.plot(xdf[xdf["tEnd(ms)"]==0].groupby("gestureSet").count()["tEnd(ms)"])
+plt.legend(legend)
+
+# %% [markdown]
 # ## Remove "errors"
 
 # %%
@@ -248,12 +254,14 @@ plt.plot(hicks_law_data["tEnd(ms)"], "bo")
 # %%
 plt.hist(hicks_law_data["tEnd(ms)"])
 
-# %%
-li
 
 # %%
-hicks_law_data["logtime"] = np.log(hicks_law_data["tEnd(ms)"])
+def take_log(data):
+    data["logtime"] = np.log(data["tEnd(ms)"])
+    return data
+hicks_law_data = take_log(hicks_law_data)
 
+# %%
 gesture_set_types = ["Half", "Combined"]
 for x in hicks_law_data.groupby(["fNmb","gesture", "gestureSet"]):
     xdf = pd.DataFrame(x[1])
@@ -264,6 +272,20 @@ for x in hicks_law_data.groupby(["fNmb","gesture", "gestureSet"]):
 plt.boxplot([pd.DataFrame(x[1])["logtime"] for x in hicks_law_data.groupby(["condiID"])])
 plt.show()
 
+# %% [markdown]
+# ## Interaction plot
+
+# %%
+gesture_set_types = ["Half", "Combined"]
+legend =[]
+for x in hicks_law_data.groupby(["fNmb","gesture"]):
+    #print(x[0])
+    legend.append(x[0])
+    xdf = pd.DataFrame(x[1])
+    #print(xdf[xdf["tEnd(ms)"]!=0].groupby("gestureSet").mean()["tEnd(ms)"])
+    plt.plot(xdf.groupby("gestureSet").mean()["logtime"])
+plt.legend(legend)
+
 # %%
 # TODO: Anova
 
@@ -272,17 +294,45 @@ plt.show()
 
 
 # %%
-gestureSets = ["Half", "Combined"]
-for x in hicks_law_data.groupby(["fNmb","gesture"]):
-    xdf = pd.DataFrame(x[1])
-    title = f"{x[0][0]} Finger{'s' if (int(x[0][0])>1) else ''} - {x[0][1]}"
-    plt.title(title)
-    reaction_times = [xdf[xdf.gestureSet == gesture_set]["logtime"]
-                      for gesture_set in gesture_set_types]
-    plt.boxplot(reaction_times)
-    plt.xticks(*list(zip(*enumerate(gestureSets,1))))
-    plt.ylabel("log reaction time [log ms]")
-    plt.savefig(f"img/{title.replace(' ', '')}-box.png",dpi=300)
-    plt.show()
+def make_boxplots(data):
+    gestureSets = ["Half", "Combined"]
+    for x in data.groupby(["fNmb","gesture"]):
+        xdf = pd.DataFrame(x[1])
+        title = f"{x[0][0]} Finger{'s' if (int(x[0][0])>1) else ''} - {x[0][1]}"
+        plt.title(title)
+        reaction_times = [xdf[xdf.gestureSet == gesture_set]["logtime"]
+                          for gesture_set in gesture_set_types]
+        plt.boxplot(reaction_times)
+        plt.xticks(*list(zip(*enumerate(gestureSets,1))))
+        plt.ylabel("log reaction time [log ms]")
+        plt.savefig(f"img/{title.replace(' ', '')}-box.png",dpi=300)
+        plt.show()
+make_boxplots(hicks_law_data)
+
+# %%
+
+# dsk = {'load': (read_data_from_participant, 'combined2'),
+#        'clean': (remove_incorrect, 'load'),
+#        'takelog':(take_log,"clean")
+#        ,'box': (make_boxplots, 'takelog'),
+#        #'clean-3': (clean, 'load-3'),
+#        #'analyze': (analyze, ['clean-%d' % i for i in [1, 2, 3]]),
+#        #'store': (store, 'analyze')
+#       }
+
+# from dask.multiprocessing import get
+# get(dsk, 'box')  # executes in parallel
+
+# %%
+import pandas as pd
+import scipy.stats as stats
+import researchpy as rp
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# %%
+results = ols('logtime ~ gestureSet*gesture*fNmb + partiID', data=hicks_law_data).fit()
+results.summary()
+
 
 # %%
